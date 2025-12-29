@@ -2,6 +2,9 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+import xgboost
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
 
 # Load model and dataframe
 pipe = pickle.load(open("pipe.pkl", "rb"))
@@ -58,3 +61,4 @@ if st.button("Predict Price"):
 
     price = int(np.exp(pipe.predict(input_df)[0]))
     st.success(f"💰 Estimated Price: ₹ {price}")
+
